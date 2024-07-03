@@ -1,0 +1,43 @@
+.nav-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 2000px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+    background-color: white;
+}
+
+.immg{
+    position: fixed;
+    margin-top: -150px;
+    margin-left: -50px;
+}
+
+.butt{
+    position: relative;
+    margin-top: 130px;
+    margin-left: 80px;
+    border: none;
+    height: 40px;
+    width: 200px;
+    background: #ff3300;
+    justify-content: center;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+    color: white;
+    cursor: pointer;
+}
+
+.butt-log{
+    position: relative;
+    top: -100px;
+    right: -250px;
+    margin-left: 40px;
+    height: 40px;
+    width: 200px;
+    background: #ff3300;
+    justify-content: center;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+    color: white;
+    cursor: pointer;
+}
