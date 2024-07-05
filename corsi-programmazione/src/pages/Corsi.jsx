@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 function Corsi(){
     return(
         <>
-            <NavBar></NavBar>
+            <NavBar use={0} changeBtm={"LogOut"} path={"/"} vis={"hidden"} ></NavBar>
         </>
     );
 }

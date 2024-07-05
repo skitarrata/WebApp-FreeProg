@@ -7,6 +7,7 @@ import Supporto from './pages/Supporto.jsx'
 import SignIn from './pages/SignIn.jsx'
 import LogIn from './pages/LogIn.jsx'
 import HomePage from './pages/HomePage.jsx'
+import Home from './pages/Home.jsx'
 import './index.css'
 import './Style.css'
 
@@ -14,6 +15,10 @@ import './Style.css'
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home></Home>,
+  },
+  {
+    path: "/HomePage",
     element: <HomePage></HomePage>,
   },
   {

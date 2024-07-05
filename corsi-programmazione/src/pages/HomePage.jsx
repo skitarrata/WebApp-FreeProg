@@ -4,7 +4,7 @@ import Card from "../components/Card";
 function HomePage(){
     return(
         <>
-            <NavBar>
+            <NavBar use={0} changeBtm={"LogOut"} path={"/"} vis={"hidden"} > 
                 <Card 
                     title="Corso JavaScript"
                     imgUrl="./javascript.jpg"></Card>

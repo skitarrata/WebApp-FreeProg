@@ -31,9 +31,9 @@ function FormSignIn(){
     function checkEmail(){
         var count = 0;
         var pas = false;
-    
+
         if (email.indexOf("@") === -1 || (email.indexOf(".it") === -1 && email.indexOf(".com") === -1 && email.indexOf(".org") === -1)){
-            setError("Email non consentita");
+            setError("Questa non è una Email");
             setErr({...err, em: false});
             return;
         }
@@ -51,10 +51,11 @@ function FormSignIn(){
         }
 
         if (count !== 1 || pas === true){
-            setError("Questa non è una Email");
+            setError("Email non consentita");
             setErr({...err, em: false});
             return;
         }
+        controlEmail();
         setErr({...err, em: true});
         return;
     }
@@ -67,6 +68,7 @@ function FormSignIn(){
                 return ;
             }
         }
+        controlUser();
         setErr({...err, us: true});
         return;
     }
@@ -107,6 +109,50 @@ function FormSignIn(){
         return;
     }
 
+    function controlUser(){
+        var url = "http://localhost/react/controluser.php"
+        var headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        };
+        var Data = {
+            user: user,
+        }
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(Data)
+        }).then((response) => response.json())
+        .then((response) => {
+            setError(response[0].result);
+        }).catch((m) => {
+            setError(m);
+            console.log(m);
+        });
+    }
+
+    function controlEmail(){
+        var url = "http://localhost/react/controlemail.php"
+        var headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        };
+        var Data = {
+            email: email,
+        }
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(Data)
+        }).then((response) => response.json())
+        .then((response) => {
+            setError(response[0].result);
+        }).catch((m) => {
+            setError(m);
+            console.log(m);
+        });
+    }
+
     function handleSubmit(){
         if(user !== "" && email !== "" && pass1 !== "" && pass2 !== ""){
             if (err.us !== false && err.em !== false && err.pas1 !== false && err.pas2 !== false ){
@@ -126,7 +172,12 @@ function FormSignIn(){
                     body: JSON.stringify(Data)
                 }).then((response) => response.json())
                 .then((response) => {
-                    setMsg(response[0].result);
+                    if (response[0].result === "Alcuni dati risultano già utilizzati!"){
+                        setError(response[0].result);
+                    }
+                    else{
+                        setMsg(response[0].result);
+                    }
                 }).catch((m) => {
                     setError(m);
                     console.log(m);
@@ -153,28 +204,24 @@ function FormSignIn(){
                 <label>Username</label>
                 <input 
                     type="text" 
-                    name="user"
                     value={user}
                     onChange={(e) => handleInputChange(e, setError, setUser, "Username")}
-                    onBlur={checkUser} />
+                    onBlur={checkUser}  />
                 <label>Email</label>
                 <input 
                     type="email"
-                    name="email"
                     value={email}
                     onChange={(e) => handleInputChange(e, setError, setEmail, "Email")} 
                     onBlur={checkEmail} />
                 <label>Password</label>
                 <input 
                     type="password"
-                    name="pass1"
                     value={pass1}
                     onChange={(e) => handleInputChange(e, setError, setPass1, "Password")}
                     onBlur={checkPassword1} />
                 <label>Conferma Password</label>
                 <input 
                     type="password"
-                    name="pass2"
                     value={pass2}
                     onChange={(e) => handleInputChange(e, setError, setPass2, "Conferma Password")}
                     onBlur={checkPassword2} />
