@@ -1,8 +1,9 @@
 import './NavBar.css';
 import LinkButton from './LinkButton';
+import Logout from './Logout';
 
 
-function NavBar({vis, use, changeBtm, path, children}){
+function NavBar({vis, use, children}){
 
     return(
         <>
@@ -13,7 +14,8 @@ function NavBar({vis, use, changeBtm, path, children}){
                 <LinkButton dis1={use} to={"/Esercizi"} name={"butt"}>Esercizi</LinkButton>
                 <LinkButton dis1={use} to={"/Supporto"} name={"butt"}>Supporto</LinkButton>
                 <LinkButton dis2={use} view={vis} to={"/SignIn"} name={"butt-log"}>SignIn</LinkButton>
-                <LinkButton to={path} name={"butt-log"}>{changeBtm}</LinkButton>
+                <LinkButton dis2={use} view={vis} to={"/LogIn"} name={"butt-log"}>LogIn</LinkButton>
+                <Logout></Logout>
             </div>
             <div className="base">
                 <img className="immg2" src="./src/assets/fp.png" width="250" height="200" />

@@ -41,3 +41,17 @@
     color: white;
     cursor: pointer;
 }
+
+.butt-out{
+    position: relative;
+    top: -100px;
+    right: -250px;
+    margin-left: -200px;
+    height: 40px;
+    width: 200px;
+    background: #ff3300;
+    justify-content: center;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+    color: white;
+    cursor: pointer;
+}

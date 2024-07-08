@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../Authenticate/AuthContext";
 
 function FormLogIn(){
-
+    //const naviget = useNavigate();
+    const { login } = useAuth();
     const [user, setUser] = useState("");;
     const [pass, setPass] = useState("");
     const [error, setError] = useState("");
@@ -16,6 +18,14 @@ function FormLogIn(){
             setMsg("");
         }, 6000);
     }, [msg]);
+
+    /* const handleSubmit = async (e) => {
+        e.preventDefault();
+        // Simula una chiamata API di login
+        // Dovresti sostituire questo con la tua chiamata API reale
+        const token = 'sample_token'; // Questo dovrebbe essere restituito dalla tua API
+        login(token);
+      }; */
 
     function handleInputChange(e, funct1, funct2, str){
         funct1("");
@@ -33,7 +43,6 @@ function FormLogIn(){
                 return ;
             }
         }
-        //controlUser();
         setErr({...err, us: true});
         return;
     }
@@ -73,6 +82,10 @@ function FormLogIn(){
                     }
                     else{
                         setMsg(response[0].result);
+                        setTimeout(function(){
+                            const token = 'sample_token'; // Questo dovrebbe essere restituito dalla tua API
+                            login(token);
+                        }, 3000);
                     }
                 }).catch((m) => {
                     setError(m);
@@ -112,6 +125,7 @@ function FormLogIn(){
                     type="submit"
                     defaultValue="Login" 
                     className="btn"
+                    /* onSubmit={handleSubmit} */
                     onClick={handleLogin} />
             </div>
         </>

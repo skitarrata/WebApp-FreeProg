@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function FormSignIn(){
+    const naviget = useNavigate();
     const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [pass1, setPass1] = useState("");
@@ -177,6 +179,9 @@ function FormSignIn(){
                     }
                     else{
                         setMsg(response[0].result);
+                        setTimeout(function(){
+                            naviget("/LogIn");
+                        }, 3000);
                     }
                 }).catch((m) => {
                     setError(m);
