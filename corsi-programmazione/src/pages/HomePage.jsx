@@ -1,10 +1,12 @@
 import NavBar from "../components/NavBar";
 import Card from "../components/Card";
+import CookieComponent from "../components/CookieComponent";
 
 function HomePage(){
     return(
         <>
-            <NavBar use={0} changeBtm={"LogOut"} path={"/"} vis={"hidden"} > 
+            <NavBar use={0} changeBtm={"LogOut"} path={"/"} vis={"hidden"} >
+            <CookieComponent/>
                 <Card 
                     title="Corso JavaScript"
                     imgUrl="./javascript.jpg"></Card>

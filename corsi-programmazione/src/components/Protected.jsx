@@ -5,7 +5,7 @@ const Protected = (props) => {
     const naviget = useNavigate();
     const { Component } = props;
     useEffect(() => {
-        var login = localStorage.getItem("login");
+        var login = localStorage.getItem("token");
         if(!login){
             localStorage.setItem("loginStatus", "Perfavore effettua prima il login!");
             naviget("/", {replace: true});

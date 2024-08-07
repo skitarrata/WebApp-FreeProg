@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function FormLogIn(){
     const { login } = useAuth();
-    const [user, setUser] = useState("");;
+    const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
     const [errormsg, setErrorMsg] = useState("");
     const [msg, setMsg] = useState("");

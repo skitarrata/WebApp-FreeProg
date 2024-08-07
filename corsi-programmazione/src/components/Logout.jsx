@@ -1,10 +1,16 @@
 import React from 'react';
 import { useAuth } from '../Authenticate/AuthContext';
+import Cookies from 'js-cookie';
 
 const Logout = () => {
   const { isAuthenticated, logout } = useAuth();
 
   const handleLogout = () => {
+    const consent = Cookies.get('authToken');
+    if (consent) {
+      alert('Cookie rimosso!');
+    }
+    Cookies.remove('authToken');
     logout();
   };
 
