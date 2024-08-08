@@ -16,7 +16,7 @@ input[type=text], input[type=email], input[type=password]{
     margin-top: 0.5rem;
     padding: 0.5rem;
     border: 1px solid gray;
-    width: 280px;
+    width: 350px;
 }
 
 .btn{
@@ -30,13 +30,14 @@ input[type=text], input[type=email], input[type=password]{
 }
 
 /* da togliere */
-.btn-container{
+/* .btn-container{
     display: flex;
     justify-content: space-between;
     width: 85%;
     margin-top: 1rem;
 }
-
+ */
+ 
 .container{
     display: flex;
     flex-direction: column;
