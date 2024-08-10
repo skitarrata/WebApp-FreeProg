@@ -13,7 +13,7 @@ BUILD_DIR =		build
 
 # DEVO AVVIARE ANCHE UNO SCRIPT PER CONFIGURARE DATABASE 
 # Regole
-.PHONY: all install copy update build start clean #test
+.PHONY: all install install-db start-xampp copy update build start clean #test
 
 # Installazione delle dipendenze
 install:
@@ -37,11 +37,18 @@ build: clean
 	npm run build
 
 # Avvio dell'applicazione
-start:
+start-xampp:
 	$(SYS) stop mariadb
 	$(SYS) stop apache2
 	$(SYS) daemon-reload
 	sudo $(XAMP)lampp start
+
+# Installazione del Database 
+install-db: start-xampp
+	sudo bash script_database/createdb.sh
+
+# Avvio dell'applicazione
+start: start-xampp
 	npm run dev
 
 # Pulizia dei file generati con il comando build
@@ -55,5 +62,5 @@ clean:
 # Aggiornamento dei file php per le repository di xampp
 update: copy start
 
-# Regola predefinita
-all: install copy build
+# Regola predefinita DA VEDERE
+all: install copy install-db build 
