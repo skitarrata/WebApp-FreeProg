@@ -1,0 +1,13 @@
+.container-up{
+    justify-content: center;
+    display: flex;
+    height: 10px;
+    width: 400px;
+    margin-left: 1100px;
+    margin-top: 30px;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+    padding: 45px;
+    background: #fff;
+}

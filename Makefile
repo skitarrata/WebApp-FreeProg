@@ -31,6 +31,8 @@ copy:
 	$(CPY) $(DIREQ)registration.php $(DIRPHP)/registration.php
 	$(CPY) $(DIREQ)controluser.php $(DIRPHP)/controluser.php
 	$(CPY) $(DIREQ)controlemail.php $(DIRPHP)/controlemail.php
+	$(CPY) $(DIREQ)upload_ex.php $(DIRPHP)/upload_ex.php
+	$(CPY) $(DIREQ)upload_video.php $(DIRPHP)/upload_video.php
 
 # Costruzione del progetto, per quando sarà pronto per essere distribuito su un server web
 build: clean
