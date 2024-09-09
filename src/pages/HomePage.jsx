@@ -9,28 +9,28 @@ function HomePage(){
             <CookieComponent/>
                 <Card 
                     title="Corso JavaScript"
-                    imgUrl="./javascript.jpg"></Card>
+                    typelan="JavaScript"></Card>
                 <Card 
                     title="Corso HTML"
-                    imgUrl="./html.jpg"></Card>
+                    typelan="HTML"></Card>
                 <Card 
                     title="Corso CSS"
-                    imgUrl="./css.jpg"></Card>
+                    typelan="CSS"></Card>
                 <Card 
                     title="Corso Java"
-                    imgUrl="./java.jpg"></Card>
+                    typelan="Java"></Card>
                 <Card 
                     title="Corso C++"
-                    imgUrl="./c++.jpg"></Card>
+                    typelan="C++"></Card>
                 <Card 
                     title="Corso C#"
-                    imgUrl="./cs.jpg"></Card>
+                    typelan="C#"></Card>
                 <Card 
                     title="Corso C"
-                    imgUrl="./c.jpg"></Card>
+                    typelan="C"></Card>
                 <Card 
                     title="Corso Python"
-                    imgUrl="./python.jpg"></Card>
+                    typelan="Python"></Card>
             </NavBar>
         </>
     );

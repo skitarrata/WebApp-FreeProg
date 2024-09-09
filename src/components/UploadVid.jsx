@@ -3,11 +3,15 @@ import axios from 'axios';
 
 function UploadVid() {
     const [title, setTitle] = useState('');
+    const [language, setLanguage] = useState('');
     const [videoFile, setVideoFile] = useState(null);
-    const [message, setMessage] = useState('');
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
+    };
+
+    const handleLanguageChange = (e) => {
+        setLanguage(e.target.value);
     };
 
     const handleFileChange = (e) => {
@@ -22,8 +26,11 @@ function UploadVid() {
             return;
         }
 
+        console.log(videoFile);
+
         const formData = new FormData();
         formData.append('title', title);
+        formData.append('language', language);
         formData.append('video', videoFile);
 
         axios.post('http://localhost/react/upload_video.php', formData, {
@@ -32,11 +39,15 @@ function UploadVid() {
             }
         })
         .then(response => {
-            setMessage(response.data.message);
+            console.log(response.data.message);
+            alert(response.data.message);
         })
         .catch(error => {
-            console.error("Errore durante il caricamento del video.", error);
-            setMessage('Errore durante il caricamento del video.');
+            if (error.response) {
+                console.error("Errore durante il caricamento del video:", error);
+                alert("Errore durante il caricamento del video");
+            }
+            throw error;
         });
     };
 
@@ -46,7 +57,7 @@ function UploadVid() {
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
-                        placeholder="Titolo del video"
+                        placeholder="Titolo video, consentiti MP4, AVI e MOV da 50MB"
                         value={title}
                         onChange={handleTitleChange}
                         required
@@ -57,9 +68,19 @@ function UploadVid() {
                         onChange={handleFileChange}
                         required
                     />
+                    <select className='dropdown-select' value={language} onChange={handleLanguageChange} required >
+                        <option value="" disabled>Linguaggio</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                        <option value="C#">C#</option>
+                        <option value="C">C</option>
+                        <option value="Python">Python</option>
+                    </select>
                     <button className='btn' type="submit">Carica Video</button>
                 </form>
-                {message && <p>{message}</p>}
             </div>
         </>
     );

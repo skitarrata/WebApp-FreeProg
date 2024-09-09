@@ -2,12 +2,21 @@
     justify-content: center;
     display: flex;
     height: 10px;
-    width: 400px;
-    margin-left: 1100px;
-    margin-top: 30px;
+    width: 490px;
+    margin-left: 1000px;
+    margin-top: 10px;
     align-items: center;
     border-radius: 5px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
     padding: 45px;
     background: #fff;
+}
+
+.dropdown-select{
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 16px;
 }

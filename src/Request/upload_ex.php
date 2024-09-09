@@ -23,7 +23,6 @@
 
     // Crea la directory se non esiste
     if (!file_exists($target_dir)) {
-        umask(0);
         if (is_writable(dirname($target_dir))) {
            if (mkdir($target_dir, 0777, true)) {
                 echo "Cartella creata con successo in " . $target_dir;
@@ -36,25 +35,28 @@
     }
     
     $target_file = "$target_dir/$file_name"; // Configura il percorso completo del file
+    $language = $_POST['language'];
     $uploadOk = 1; // Variabile per tenere traccia dell'upload
-    $message = "";
 
     // Verifica se il file esiste già
     if (file_exists($target_file)) {
-        $message = "Il file esiste già.";
+        echo json_encode(["message" => "Il file esiste già."]);
+        http_response_code(400);
         $uploadOk = 0;
     }
 
     // Verifica la dimensione del file (massimo 5MB)
     if ($_FILES["file"]["size"] > 5000000) {
-        $message = "Il file è troppo grande.";
+        echo json_encode(["message" => "Il file è troppo grande."]);
+        http_response_code(400);
         $uploadOk = 0;
     }
 
     // Verifica il tipo di file 
     $allowed_types = ["txt", "doc", "jpeg", "jpg", "pdf"];
     if (!in_array($file_name_arr[1], $allowed_types)) {
-        $message = "Solo JPG, JPEG, TXT, DOC e PDF sono consentiti.";
+        echo json_encode(["message" => "Solo JPG, JPEG, TXT, DOC e PDF sono consentiti."]);
+        http_response_code(400);
         $uploadOk = 0;
     }
 
@@ -62,20 +64,20 @@
     if ($uploadOk == 1) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
             // Se il file è stato caricato correttamente, salva le informazioni nel database
-            $sql = "INSERT INTO exercises(title, paths) VALUE ('$file_name', '$target_file');";
+            $sql = "INSERT INTO exercises(title, typeprog, paths) VALUE ('$file_name', '$language', '$target_file');";
 
             if ($conn->query($sql) === TRUE) {
-                $message = "Il file " . $file_name . " è stato caricato con successo e salvato nel database.";
+                echo json_encode(["message" => "Il file è stato caricato con successo."]);
+                http_response_code(200);
             } else {
-                $message = "Errore durante il salvataggio nel database.";
+                echo json_encode(["message" => "Errore durante il salvataggio nel database."]);
+                http_response_code(500);
             }
         } else {
-            $message = "Si è verificato un errore durante il caricamento del file. $target_file";
+            echo json_encode(["message" => "Si è verificato un errore durante il caricamento del file. $target_file"]);
+            http_response_code(500);
         }
     }
 
-    // Chiudi la connessione al database
     $conn->close();
-    $response[] = array("message" => $message);
-    echo json_encode($response);
 ?>
