@@ -4,7 +4,12 @@ import './Card.css';
 function Card({title, typelan, url}){
 
     const [imgUrl, setImgUrl] = useState(null);
-    
+    const handleClick = () => {
+        if (url == "") {
+          console.log("Bottone cliccato!");
+        }
+    }
+
     useEffect(() => {
         if (typelan == "JavaScript"){
             setImgUrl("./javascript.jpg");
@@ -31,7 +36,7 @@ function Card({title, typelan, url}){
     return(
         <>
             <div className='card'>
-                <img className='img-card' src={imgUrl} onClick={() => window.open(url, '_blank')} width="260" height="120" />
+                <img className='img-card' src={imgUrl} onClick={url == "" ? null : () => window.open(url, '_blank')} width="260" height="120" />
                 <h5 className='label-card'>{title}</h5>
             </div>
         </>

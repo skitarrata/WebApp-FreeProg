@@ -33,9 +33,10 @@ copy:
 	$(CPY) $(DIREQ)controlemail.php $(DIRPHP)/controlemail.php
 	$(CPY) $(DIREQ)upload_ex.php $(DIRPHP)/upload_ex.php
 	$(CPY) $(DIREQ)upload_video.php $(DIRPHP)/upload_video.php
-	$(CPY) $(DIREQ)search.php $(DIRPHP)/search.php
 	$(CPY) $(DIREQ)fileload.php $(DIRPHP)/fileload.php
 	$(CPY) $(DIREQ)videoload.php $(DIRPHP)/videoload.php
+	$(CPY) $(DIREQ)postData.php $(DIRPHP)/postData.php
+	$(CPY) $(DIREQ)getData.php $(DIRPHP)/getData.php
 
 # Costruzione del progetto, per quando sarà pronto per essere distribuito su un server web
 build: clean

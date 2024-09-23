@@ -1,0 +1,28 @@
+.supp {
+    font-family: Arial, sans-serif;
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  input {
+    margin-right: 10px;
+    padding: 5px;
+    width: 300px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  li {
+    margin: 10px 0;
+  }

@@ -57,10 +57,10 @@ input[type=text], input[type=email], input[type=password]{
 
 .update{
     position: fixed;
-    bottom: -500px;
+    bottom: -350px;
     height: 1050px;
     width: 1400px;
-    margin-left: 100px;
+    margin-left: 180px;
     border-radius: 5px;
     justify-content: center;
     background-color: white;
