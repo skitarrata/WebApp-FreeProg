@@ -15,7 +15,7 @@
         exit();
     }
 
-    $sql = "SELECT typeprog, title FROM exercises"; // Modifica la query in base alla struttura del tuo database
+    $sql = "SELECT typeprog, title FROM exercises";
     $result = $conn->query($sql);
     $files = [];
 
@@ -27,6 +27,5 @@
 
     $conn->close();
 
-    //header('Content-Type: application/json');
     echo json_encode($files);
 ?>

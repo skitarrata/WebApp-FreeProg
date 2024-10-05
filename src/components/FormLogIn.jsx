@@ -75,7 +75,6 @@ function FormLogIn(){
                 })
                 .catch(error => {
                     if (error.response) {
-                        // Il server ha risposto con un codice di stato diverso da 2xx
                         console.error('Errore nei dati ritornati:', error.response.data);
                         console.error('Codice di stato:', error.response.status);
                     } else if (error.request) {

@@ -4,7 +4,7 @@ import './SearchBar.css';
 import '../Style.css';
 
 const SearchBar = ({files, typefile}) => {
-    const [filteredFiles, setFilteredFiles] = useState([]); // File filtrati per la ricerca
+    const [filteredFiles, setFilteredFiles] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
     // Funzione per aggiornare i file filtrati basati sulla ricerca

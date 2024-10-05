@@ -56,7 +56,7 @@
             $uploadOk = 0;
         }
 
-        // Controlla la dimensione del file (opzionale)
+        // Controlla la dimensione del file
         if ($_FILES["video"]["size"] > 50000000) { // 50MB
             echo json_encode(["success" => false, "message" => "Il file è troppo grande."]);
             http_response_code(400);

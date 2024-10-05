@@ -3,7 +3,12 @@
     header("Access-Control-Allow-Methods: GET, POST");
     header("Access-Control-Allow-Headers: Content-Type");
 
-    $conn = new mysqli("localhost", "react-user", "1234", "user");
+    $servername = "localhost";
+    $username = "react-user"; 
+    $password = "1234"; 
+    $dbname = "user"; 
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
     if(mysqli_connect_error()){
         echo mysqli_connect_error();
         exit();

@@ -4,12 +4,7 @@ import './Card.css';
 function Card({title, typelan, url}){
 
     const [imgUrl, setImgUrl] = useState(null);
-    const handleClick = () => {
-        if (url == "") {
-          console.log("Bottone cliccato!");
-        }
-    }
-
+    
     useEffect(() => {
         if (typelan == "JavaScript"){
             setImgUrl("./javascript.jpg");

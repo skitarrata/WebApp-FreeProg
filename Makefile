@@ -11,7 +11,6 @@ DIRPHP =		/opt/lampp/htdocs/react
 DIREQ =			src/Request/
 BUILD_DIR =		build
 
-# DEVO AVVIARE ANCHE UNO SCRIPT PER CONFIGURARE DATABASE 
 # Regole
 .PHONY: all install install-db start-xampp copy update build start clean #test
 
@@ -62,12 +61,8 @@ start: start-xampp
 clean:
 	rm -rf $(BUILD_DIR)
 
-# Esecuzione dei test da vedere
-#test:
-#	npm test
-
 # Aggiornamento dei file php per le repository di xampp
 update: copy start
 
-# Regola predefinita DA VEDERE
-all: install copy install-db build 
+# Regola predefinita
+all: install copy install-db start 
