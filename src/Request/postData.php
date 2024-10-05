@@ -1,4 +1,5 @@
 <?php
+
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
@@ -6,7 +7,7 @@
     $servername = "localhost";
     $username = "react-user"; 
     $password = "1234";
-    $dbname = "forum";
+    $dbname = "user";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if(mysqli_connect_error()){
@@ -16,14 +17,14 @@
 
     $data = json_decode(file_get_contents("php://input"), true);
 
-    if (isset($data['question'])) {
-        $stmt = $conn->prepare("INSERT INTO questions (question_text) VALUES (?)");
-        $stmt->bind_param("s", $data['question']);
+    if (isset($data['us'], $data['question'])) {
+        $stmt = $conn->prepare("INSERT INTO questions (_owner, question_text) VALUES (?, ?)");
+        $stmt->bind_param("ss", $data['us'], $data['question']);
         $stmt->execute();
         echo json_encode(["success" => true]);
-    } elseif (isset($data['answer'], $data['question_id'])) {
-        $stmt = $conn->prepare("INSERT INTO answers (question_id, answer_text) VALUES (?, ?)");
-        $stmt->bind_param("is", $data['question_id'], $data['answer']);
+    } elseif (isset($data['us'], $data['answer'], $data['question_id'])) {
+        $stmt = $conn->prepare("INSERT INTO answers (_owner, question_id, answer_text) VALUES (?, ?, ?)");
+        $stmt->bind_param("sis", $data['us'], $data['question_id'], $data['answer']);
         $stmt->execute();
         echo json_encode(["success" => true]);
     } else {

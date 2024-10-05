@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../components/Card';
-import './SearchBar.css'
+import './SearchBar.css';
+import '../Style.css';
 
 const SearchBar = ({files, typefile}) => {
     const [filteredFiles, setFilteredFiles] = useState([]); // File filtrati per la ricerca
@@ -32,9 +33,13 @@ const SearchBar = ({files, typefile}) => {
                     />
                 </form>
             </div>
-            {filteredFiles.map((file, index) => (
-                <Card key={index} title={file.title} typelan={file.typeprog} url={typefile == "ex" ? "http://localhost/react/uploads_ex/" + file.title : "http://localhost/react/uploads_video/" + file.names} />
-            ))}
+            <div className="scroll-container" >
+                <div className="scroll-content" >
+                    {filteredFiles.map((file, index) => (
+                        <Card key={index} title={file.title} typelan={file.typeprog} url={typefile == "ex" ? "http://localhost/react/uploads_ex/" + file.title : "http://localhost/react/uploads_video/" + file.names} />
+                    ))}
+                </div>
+            </div>
         </>
     );
 };

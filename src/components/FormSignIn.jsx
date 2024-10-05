@@ -234,7 +234,7 @@ function FormSignIn(){
                 <input 
                     type="submit"
                     defaultValue="submit" 
-                    className="btn"
+                    className="btn-log"
                     onClick={handleSubmit} />
             </div>
         </>

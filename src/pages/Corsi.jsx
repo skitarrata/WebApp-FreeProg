@@ -19,7 +19,7 @@ function Corsi(){
             }
         };
         fetchFiles();
-    }, []);
+    }, [files]);
 
     return(
         <>

@@ -19,6 +19,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $title = $_POST['title'];
         $language = $_POST['language'];
+        $user = $_POST['user'];
         
         // Gestione del file video
         $target_dir = "/opt/lampp/htdocs/react/uploads_video";
@@ -71,7 +72,7 @@
 
         if ($uploadOk == 1) {
             if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_file)) {
-                $sql = "INSERT INTO videos (title, names, typeprog, paths) VALUE ('$title', '$names', '$language', '$target_file')";
+                $sql = "INSERT INTO videos (_owner, title, names, typeprog, paths) VALUE ('$user', '$title', '$names', '$language', '$target_file')";
                 if ($conn->query($sql) === TRUE) {
                     echo json_encode(["success" => true, "message" => "Video caricato con successo."]);
                     http_response_code(200);

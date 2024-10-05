@@ -6,7 +6,7 @@
     $servername = "localhost";
     $username = "react-user"; 
     $password = "1234";
-    $dbname = "forum";
+    $dbname = "user";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if(mysqli_connect_error()){

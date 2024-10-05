@@ -36,6 +36,7 @@
     
     $target_file = "$target_dir/$file_name"; // Configura il percorso completo del file
     $language = $_POST['language'];
+    $user = $_POST['user'];
     $uploadOk = 1; // Variabile per tenere traccia dell'upload
 
     // Verifica se il file esiste già
@@ -64,7 +65,7 @@
     if ($uploadOk == 1) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
             // Se il file è stato caricato correttamente, salva le informazioni nel database
-            $sql = "INSERT INTO exercises(title, typeprog, paths) VALUE ('$file_name', '$language', '$target_file');";
+            $sql = "INSERT INTO exercises(_owner, title, typeprog, paths) VALUE ('$user', '$file_name', '$language', '$target_file');";
 
             if ($conn->query($sql) === TRUE) {
                 echo json_encode(["message" => "Il file è stato caricato con successo."]);

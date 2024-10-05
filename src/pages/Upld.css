@@ -2,8 +2,8 @@
     justify-content: center;
     display: flex;
     height: 10px;
-    width: 490px;
-    margin-left: 1000px;
+    width: 550px;
+    margin-left: 900px;
     margin-top: 10px;
     align-items: center;
     border-radius: 5px;
@@ -17,6 +17,7 @@
     border-radius: 5px;
     margin-right: 10px;
     border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    background-color: white !important;
+    color: black !important;
     font-size: 16px;
 }

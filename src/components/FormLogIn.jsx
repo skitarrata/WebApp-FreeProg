@@ -122,7 +122,7 @@ function FormLogIn(){
                 <input 
                     type="submit"
                     defaultValue="Login" 
-                    className="btn"
+                    className="btn-log"
                     onClick={handleLogin} />
             </div>
         </>

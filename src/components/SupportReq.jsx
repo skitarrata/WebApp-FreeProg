@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './SupportReq.css';
+import AuthDecode from '../Authenticate/AuthDecode';
+import '../Style.css';
 
 function SupportReq() {
   const [questions, setQuestions] = useState([]);
   const [newQuestion, setNewQuestion] = useState('');
   const [newAnswer, setNewAnswer] = useState('');
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [user, setUser] = useState('');
 
   // Funzione per ottenere le domande dal backend
   const fetchQuestions = async () => {
@@ -15,7 +18,12 @@ function SupportReq() {
   };
 
   useEffect(() => {
+    const currentUser = AuthDecode();
+    if (currentUser) {
+      setUser(currentUser.username);
+    }
     fetchQuestions();
+
   }, []);
 
   // Funzione per inviare una nuova domanda
@@ -26,7 +34,7 @@ function SupportReq() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question: newQuestion }),
+        body: JSON.stringify({us: user, question: newQuestion }),
       });
       setNewQuestion('');
       fetchQuestions();
@@ -41,7 +49,7 @@ function SupportReq() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question_id: selectedQuestion, answer: newAnswer }),
+        body: JSON.stringify({us: user, question_id: selectedQuestion, answer: newAnswer }),
       });
       setNewAnswer('');
       fetchQuestions();
@@ -65,37 +73,41 @@ function SupportReq() {
         </div>
 
         {/* Elenco delle domande */}
-        <h2>Domande:</h2>
-        <ul>
-            {questions.map((question) => (
-            <li key={question.id}>
-                <strong>{question.question_text}</strong>
-                <ul>
-                {question.answers.map((answer, index) =>
-                    answer ? <li key={index}>{answer}</li> : <li key={index}>Nessuna risposta</li>
-                )}
-                </ul>
+        <div className="scroll-container" >
+            <div className="scroll-content" >
+            <h2>Domande:</h2>
+              <ul>
+                  {questions.map((question) => (
+                  <li key={question.id}>
+                      <strong>{question.question_text}</strong>
+                      <ul>
+                      {question.answers.map((answer, index) =>
+                          answer ? <li key={index}>{answer}</li> : <li key={index}>Nessuna risposta</li>
+                      )}
+                      </ul>
 
-                {/* Seleziona domanda per inviare una risposta */}
-                <button className='btn' onClick={() => setSelectedQuestion(question.id)}>
-                Rispondi
-                </button>
+                      {/* Seleziona domanda per inviare una risposta */}
+                      <button className='btn' onClick={() => setSelectedQuestion(question.id)}>
+                      Rispondi
+                      </button>
 
-                {/* Sezione per inviare una risposta */}
-                {selectedQuestion === question.id && (
-                <div>
-                    <input
-                    type="text"
-                    value={newAnswer}
-                    onChange={(e) => setNewAnswer(e.target.value)}
-                    placeholder="Scrivi una risposta..."
-                    />
-                    <button className='btn' onClick={submitAnswer}>Invia Risposta</button>
-                </div>
-                )}
-            </li>
-            ))}
-        </ul>
+                      {/* Sezione per inviare una risposta */}
+                      {selectedQuestion === question.id && (
+                      <div>
+                          <input
+                          type="text"
+                          value={newAnswer}
+                          onChange={(e) => setNewAnswer(e.target.value)}
+                          placeholder="Scrivi una risposta..."
+                          />
+                          <button className='btn' onClick={submitAnswer}>Invia Risposta</button>
+                      </div>
+                      )}
+                  </li>
+                  ))}
+              </ul>
+            </div>
+          </div>
         </div>
     </>
   );

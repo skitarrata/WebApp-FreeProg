@@ -22,6 +22,7 @@ install:
 	$(INST) @reduxjs/toolkit react-redux
 	$(INST) axios
 	$(INST) js-cookie
+	$(INST) jwt-decode
 	sudo mkdir $(DIRPHP)
 	sudo composer require firebase/php-jwt --working-dir=$(DIRPHP) $(FLAG)
 

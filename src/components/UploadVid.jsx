@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import AuthDecode from '../Authenticate/AuthDecode';
 
 function UploadVid() {
     const [title, setTitle] = useState('');
@@ -26,12 +27,12 @@ function UploadVid() {
             return;
         }
 
-        console.log(videoFile);
-
         const formData = new FormData();
+        const currentUser = AuthDecode();
         formData.append('title', title);
         formData.append('language', language);
         formData.append('video', videoFile);
+        formData.append('user', currentUser.username);
 
         axios.post('http://localhost/react/upload_video.php', formData, {
             headers: {

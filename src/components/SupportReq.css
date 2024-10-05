@@ -2,12 +2,16 @@
     font-family: Arial, sans-serif;
     width: 50%;
     margin: 0 auto;
+    background-color: white !important;
+    color: black !important;
   }
   
   input {
     margin-right: 10px;
     padding: 5px;
     width: 300px;
+    background-color: white !important;
+    color: black !important;
   }
   
   button {

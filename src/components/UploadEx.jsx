@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import AuthDecode from '../Authenticate/AuthDecode';
 
 function UploadEx() {
     const [file, setFile] = useState(null);
@@ -23,8 +24,10 @@ function UploadEx() {
 
         // Creazione di un oggetto FormData per inviare il file al server
         const formData = new FormData();
+        const currentUser = AuthDecode();
         formData.append('file', file);
         formData.append('language', language);
+        formData.append('user', currentUser.username);
 
         // Invia la richiesta POST al server PHP
         axios.post('http://localhost/react/upload_ex.php', formData, {

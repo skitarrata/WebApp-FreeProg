@@ -1,11 +1,11 @@
 <?php
     require "vendor/autoload.php";
-    use \Firebase\JWT\JWT;    
+    use \Firebase\JWT\JWT;
 
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type");
-    
+
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
         http_response_code(200);
         exit();
@@ -46,6 +46,7 @@
 
     $stmt->bind_param("s", $user);
     $stmt->execute();
+    $stmt->store_result();
     $stmt->bind_result($hashed_password);
 
     if ($stmt->fetch()) {
@@ -66,7 +67,7 @@
                 "message" => "Login effettuato con successo, andiamo alla Home...",
                 "token" => $jwt,
                 "expire_at" => $expire_claim
-            ]);        
+            ]);
         } else {
             http_response_code(401);
             echo json_encode(["message" => "Credenziali non valide."]);

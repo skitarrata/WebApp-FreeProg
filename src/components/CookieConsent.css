@@ -1,6 +1,7 @@
 .cookie-consent-popup {
     position: fixed;
-    margin-left: 530px;
+    margin-top: 5px;
+    margin-left: 915px;
     align-items: center;
     justify-content: center;
     background-color: white;

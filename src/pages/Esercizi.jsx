@@ -19,7 +19,7 @@ function Esercizi(){
             }
         };
         fetchFiles();
-    }, []);
+    }, [files]);
 
     return(
         <>
