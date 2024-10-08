@@ -1,0 +1,4 @@
+Tecnologia: PHP
+Titolo: Piattaforma di Condivisione di Corsi di Programmazione
+Descrizione: Creare un'app che consenta agli sviluppatori di condividere corsi di programmazione, offrendo lezioni, esercizi pratici e supporto della community.
+Utilizzare un database per archiviare i contenuti dei corsi, i progressi degli studenti e le risorse aggiuntive.

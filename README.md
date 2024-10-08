@@ -43,3 +43,5 @@ axios: Usato per il token JWT (Lato Frontend)
 firebase/php-jwt: Usato per il token JWT (Lato Backend)
 js-cookie: Usato per la convalida dei Cookie
 jwt-decode: Usato per estrarre informazioni dal token JWT
+
+Per quanto riguarda l'SRS, modello E-R e casi d'uso consultare la cartella Specifiche_Progettuali.
